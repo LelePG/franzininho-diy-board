@@ -7,15 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - name: Install Hugo
-      #   run: |
-      #     wget https://github.com/gohugoio/hugo/releases/download/v0.123.3/hugo_0.123.3_linux-amd64.deb
-      #     sudo dpkg -i hugo_0.123.3_linux-amd64.deb
-      # - name: Config git
-      #   run: |
-      #     git config --global user.name "LelePG"
-      #     git config --global user.email " "
-      #     git submodule add https://x-access-token:${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git action-destino
+      - name: Install Hugo
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.123.3/hugo_0.123.3_linux-amd64.deb
+          sudo dpkg -i hugo_0.123.3_linux-amd64.deb
+      - name: Config git
+        run: |
+          git config --global user.name "LelePG"
+          git config --global user.email " "
+          git submodule add https://x-access-token:${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git action-destino
       # - name: Sync and update submodules
       #   run: |
       #       git submodule sync
