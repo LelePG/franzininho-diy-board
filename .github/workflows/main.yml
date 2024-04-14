@@ -25,10 +25,10 @@ jobs:
           echo $(ls)
             dir=$(dirname ".")
             dir=${dir#./}  # remove leading ./
-            if [ -f "$folder/README.md" ]; then
+            if [ -f "$dir/README.md" ]; then
             #DIR É O NOME DAS PASTAS QUE TEM README
               echo "README.md was modified."
-              # echo $dir
+              echo $dir
               cd ./action-destino/
               echo $(pwd)
               repo_name="Franzininho DIY Board"
