@@ -24,6 +24,9 @@ jobs:
         run: |
           echo $(ls)
             if [ -f "./README.md" ]; then
+                if git diff --quiet HEAD~1 HEAD README.md; then
+                    exit 0
+                fi
               echo "README.md was modified."
               cd ./action-destino/
               repo_name="Franzininho DIY Board"
