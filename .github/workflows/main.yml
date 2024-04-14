@@ -22,29 +22,29 @@ jobs:
       #       git submodule update --init
       - name: Check for README.md and img directory
         run: |
-          echo $(ls)
-            if [ -f "./README.md" ]; then
-                if git diff --quiet HEAD~1 HEAD README.md; then
-                    exit 0
-                fi
-              echo "README.md was modified."
-              cd ./action-destino/
-              repo_name="Franzininho DIY Board"
-              rm -rf "./content/$repo_name/" # remove the directory de dntro de action-destino
-              hugo new content "$repo_name/_index.md"
-              cat "../README.md" >> "./content/$repo_name/_index.md"
-
-              if [[ -d "../img" ]]; then
-                pwd
-                cp -r "..//img" "./content/$repo_name/img"
-                echo "copiando pasta imagens"
-              else
-                echo " does not have img folder"
+          if [ -f "./README.md" ]; then
+              if git diff --quiet HEAD~1 HEAD "./README.md"; then
+                  echo "No changes to README.md"
+                  exit 0
               fi
-
-              cd ..
-            fi
+            echo "README.md was modified."
             cd ./action-destino/
-            git add .
-            git commit -m "Copied README.md files and img directories"
-            git push https://${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git
+            repo_name="Franzininho DIY Board"
+            rm -rf "./content/$repo_name/" # remove the directory de dntro de action-destino
+            hugo new content "$repo_name/_index.md"
+            cat "../README.md" >> "./content/$repo_name/_index.md"
+
+            if [[ -d "../img" ]]; then
+              pwd
+              cp -r "..//img" "./content/$repo_name/img"
+              echo "copiando pasta imagens"
+            else
+              echo " does not have img folder"
+            fi
+
+            cd ..
+          fi
+          cd ./action-destino/
+          git add .
+          git commit -m "Copied README.md files and img directories"
+          git push https://${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git
