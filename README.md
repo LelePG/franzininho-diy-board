@@ -1,16 +1,14 @@
 # Placa Franzininho DIY
 
-
 Para mais detalhes sobre o projeto, montagem e programação, acesse a [documentação](https://franzininho.gitbook.io/franzininho-docs/)
 
 O projeto é open hardware e foi publicado em [CC-BY-SA-4.0](https://github.com/Franzininho/franzininho-diy-board/blob/main/LICENSE)
 
 A Franzininho DIY está certificada na [OSHWA com UID BR000003](https://certification.oshwa.org/br000003.html)
 
-![BR000003](OSHW_mark_BR000003.png)
+![BR000003](img/OSHW_mark_BR000003.png)
 
 Entenda mais sobre open hardware: [Open source hardware: Conheça a definição e as boas práticas](https://www.embarcados.com.br/open-hardware-definicao/)
-
 
 # Características da Franzininho DIY
 
@@ -22,7 +20,6 @@ Entenda mais sobre open hardware: [Open source hardware: Conheça a definição 
 - LED Amarelo de uso geral conectado a um pino de I/O D1
 - Programação através da USB por Bootloader
 
-
 # Projeto
 
 O projeto da PCB foi desenvolvido originalmente no Eagle CAD. Para acompanhar o histórico do projeto acesse a [branch master](https://github.com/Franzininho/franzininho-diy-board/tree/master)
@@ -32,8 +29,6 @@ Todos as versões estão disponíveis nos [releases](https://github.com/Franzini
 A versão atual é a V2.2. Projeto no Kicad.
 
 Para contribuições considerar a branch main. A branch master foi mantida apenas para histórico.
-
-
 
 # Contribuição
 
@@ -46,7 +41,6 @@ Certifique-se de cumprir os seguintes critérios ao criar/enviar sua issue:
 - Use um título claro e descritivo para identificar o problema/sugestão.
 - Descreva as etapas exatas para reproduzir o problema em tantos detalhes quanto possível
 - Mencione o local onde este problema foi encontrado e o que sua sugestão afetará
-
 
 ## Contribuição para melhorias no hardware
 
@@ -61,7 +55,6 @@ Depois de obter aprovação, você precisará fazer os seguintes passos (estas i
 - 1: fork esse repositório
 - 2: Faça as alterações, commit e push para o fork
 - 3: Envie o seu Pull Request
-
 
 ## Se tiver dúvidas entre em contato
 
