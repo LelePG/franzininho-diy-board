@@ -1,0 +1,53 @@
+name: Check README
+
+on: push
+
+jobs:
+  check_readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Hugo
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.123.3/hugo_0.123.3_linux-amd64.deb
+          sudo dpkg -i hugo_0.123.3_linux-amd64.deb
+      - name: Config git
+        run: |
+          git config --global user.name "LelePG"
+          git config --global user.email " "
+          git submodule add https://x-access-token:${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git action-destino
+      # - name: Sync and update submodules
+      #   run: |
+      #       git submodule sync
+      #       git submodule update --init
+      - name: Check for README.md and img directory
+        run: |
+          echo $(ls)
+            dir=$(dirname ".")
+            dir=${dir#./}  # remove leading ./
+            if [ -f "$folder/README.md" ]; then
+            #DIR É O NOME DAS PASTAS QUE TEM README
+              echo "README.md was modified."
+              # echo $dir
+              cd ./action-destino/
+              echo $(pwd)
+              repo_name="Franzininho DIY Board"
+              rm -rf "./content/$repo_name/$dir" # remove the directory de dntro de action-destino
+              hugo new content "$repo_name/$dir/_index.md"
+              cat "../$file" >> "./content/$repo_name/$dir/_index.md"
+
+              if [[ -d "../$dir/img" ]]; then
+                pwd
+                cp -r "../$dir/img" "./content/$repo_name/$dir/img"
+                echo "copiando pasta imagens"
+              else
+                echo "$dir does not have img folder"
+              fi
+
+              cd ..
+              echo $(pwd)
+            fi
+            cd ./action-destino/
+            git add .
+            git commit -m "Copied README.md files and img directories"
+            git push https://${{ secrets.TOKEN }}@github.com/LelePG/action-destino.git
